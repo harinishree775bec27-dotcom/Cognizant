@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int a, b;
+    cout<<"Enter the value of a:\n";
+    cin >> a ;
+    cout<<"Enter the value of b:\n";
+    cin >> b;
+
+    while (b > 0) {
+        a++;
+        b--;
+    }
+
+    while (b < 0) {
+        a--;
+        b++;
+    }
+
+    cout << a << endl;
+
+    return 0;
+}
