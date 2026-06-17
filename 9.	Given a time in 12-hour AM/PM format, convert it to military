@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string time12;
+    
+
+    if (cin >> time12) {
+    
+        int hh = (time12[0] - '0') * 10 + (time12[1] - '0');
+        int mm = (time12[3] - '0') * 10 + (time12[4] - '0');
+        int ss = (time12[6] - '0') * 10 + (time12[7] - '0');
+        
+         
+        char period = time12[8]; 
+
+        
+        if (period == 'A' || period == 'a') {
+            if (hh == 12) {
+                hh = 0;
+            }
+        } else if (period == 'P' || period == 'p') {
+            if (hh != 12) {
+                hh += 12;
+            }
+        }
+
+        if (hh < 10) cout << "0";
+        cout << hh << ":";
+
+        if (mm < 10) cout << "0";
+        cout << mm << ":";
+
+        if (ss < 10) cout << "0";
+        cout << ss << endl;
+    }
+
+    return 0;
+}
+
+
