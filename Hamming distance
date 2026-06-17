@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+    int num1,num2;
+    cout<<"Enter the num1 value:\n";
+    cin >> num1;
+    cout<<"Enter the num2 value :\n";
+    cin >> num2;
+    int diff= num1^num2;
+    int distance =0;
+    while(diff>0){
+        distance +=(diff&1);
+        diff = diff>>1;
+        
+    }
+    cout<<"distance value is:\n"<<distance;
+    return 0;
+}
