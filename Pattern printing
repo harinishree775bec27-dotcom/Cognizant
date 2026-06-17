@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int n;
+    cout<<"Enter the value of n:\n";
+    if (cin >> n) {
+        
+        for (int i = n; i >= 1; i--) {
+
+            char charToPrint = ((n - i) % 2 == 0) ? '1' : '0';
+            
+            for (int j = 0; j < i; j++) {
+                cout << charToPrint;
+            }
+            cout << endl; 
+        }
+    }
+    return 0;
+}
