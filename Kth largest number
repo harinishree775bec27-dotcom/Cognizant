@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int nums[1000];
+    int n = 0;
+    int k;
+    cout<<"Enter the value of n:\n";
+ 
+ 
+    while (cin >> nums[n]) {
+        n++;
+        
+        if (cin.peek() == '\n') {
+            break;
+        }
+    }
+    
+    cout<<"Enter the value of k:\n";
+    cin >> k;
+
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (nums[j] < nums[j + 1]) {
+               
+                int temp = nums[j];
+                nums[j] = nums[j + 1];
+                nums[j + 1] = temp;
+            }
+        }
+    }
+
+   
+    cout << nums[k - 1] << "\n";
+
+    return 0;
+}
