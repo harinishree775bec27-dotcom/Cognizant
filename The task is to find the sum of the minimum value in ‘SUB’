@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+
+long long sumSubarrayMins(int ARR[], int n) {
+ 
+    int* left = new int[n];
+    int* right = new int[n];
+    int* stackArray = new int[n];
+    int top = -1;
+
+    
+    for (int i = 0; i < n; i++) {
+        while (top >= 0 && ARR[stackArray[top]] >= ARR[i]) {
+            top--;
+        }
+        left[i] = (top == -1) ? (i + 1) : (i - stackArray[top]);
+        
+        top++;
+        stackArray[top] = i; 
+    }
+
+
+    top = -1;
+
+    for (int i = n - 1; i >= 0; i--) {
+        while (top >= 0 && ARR[stackArray[top]] > ARR[i]) {
+            top--; 
+        }
+        right[i] = (top == -1) ? (n - i) : (stackArray[top] - i);
+        
+        top++;
+        stackArray[top] = i; 
+    }
+
+    
+    long long totalSum = 0;
+    for (int i = 0; i < n; i++) {
+        totalSum += (long long)ARR[i] * left[i] * right[i];
+    }
+
+    
+    delete[] left;
+    delete[] right;
+    delete[] stackArray;
+
+    return totalSum;
+}
+
+int main() {
+    int n;
+    if (cin >> n) {
+        int* ARR = new int[n];
+        for (int i = 0; i < n; i++) {
+            cin >> ARR[i];
+        }
+
+        cout << sumSubarrayMins(ARR, n) << endl;
+
+        delete[] ARR;
+    }
+    return 0;
+}
